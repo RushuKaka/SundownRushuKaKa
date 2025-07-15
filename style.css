@@ -1,0 +1,858 @@
+@font-face {
+    font-family: ruhi;
+    src: url(./NeueHaasDisplayRoman.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: ruhi;
+    /* --- Crucial fix for horizontal overflow --- */
+    overflow-x: hidden;
+}
+
+#main {
+    width: 100%;
+    /* No need for height: 100% here as content dictates height */
+    background-color: #EFEAE3;
+}
+
+#pag1 {
+    width: 100%;
+    min-height: 100vh;
+    /* Changed to vh for consistent viewport height */
+    padding: 0px 30px;
+    background-color: #EFEAE3;
+    position: relative;
+    /* Added to contain absolutely positioned children if any, though not strictly needed here */
+}
+
+.nav {
+    width: 100%;
+    height: 20vh;
+    /* Changed to vh for relative height */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 30px;
+}
+
+#nav-left {
+    /* width: 30%; Removed width as it's not strictly necessary with flex */
+    height: 100%;
+    padding-top: 10px;
+}
+
+
+#nav-right {
+    height: 100%;
+    padding-top: 30px;
+}
+
+#nav-right a {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: 1px solid rgb(91, 90, 90);
+    border-radius: 50px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+#nav-right a::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 100%;
+    /* Changed to 100% for proper off-screen positioning */
+    position: absolute;
+    border-radius: 50px;
+    background-color: black;
+    transition: all 0.3s ease;
+}
+
+#nav-right a:hover::after {
+    top: 0%;
+    border-radius: 0%;
+    z-index: -1;
+}
+
+#nav-right a:hover {
+    z-index: 9;
+}
+
+#nav-right a:hover {
+    color: white;
+    z-index: 9;
+}
+
+#center {
+    width: 100%;
+    height: 80vh;
+    /* Changed to vh for consistent viewport height */
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(132, 123, 123, 0.699);
+    padding: 40px 30px;
+}
+
+#center p {
+    width: 35%;
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+#center h1 {
+    text-align: right;
+    line-height: 110px;
+    font-size: 8rem;
+    font-weight: 700;
+}
+
+#pag2 {
+    width: 100%;
+    min-height: 100vh;
+    /* Changed to vh */
+    background-color: #EFEAE3;
+    position: relative;
+    /* Ensure it contains absolutely positioned children */
+}
+
+#shap {
+    width: 50%;
+    height: 30%;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    position: absolute;
+    margin-top: -80px;
+    right: 0px;
+    filter: blur(20px);
+    background: linear-gradient(#FE320A, #fe3f0a);
+}
+
+#shap1 {
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    animation-name: rushu1;
+    margin-top: -10px;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    background: linear-gradient(#FE320A, #fe3f0a);
+}
+
+#shap2 {
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    animation-name: rushu2;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    background: linear-gradient(#FE320A, #fe3f0a);
+}
+
+@keyframes rushu1 {
+    from {
+        transform: translate(50%, -9%);
+    }
+
+    to {
+        transform: translate(0%, 10%);
+    }
+}
+
+@keyframes rushu2 {
+    from {
+        transform: translate(5%, -5%);
+    }
+
+    to {
+        transform: translate(-10%, -90%);
+    }
+}
+
+#pagvid {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+}
+
+#pagvid video {
+    width: 100%;
+    height: 150%;
+    /* This height might cause vertical overflow if parent isn't tall enough */
+    margin-top: 20px;
+    border-radius: 30px;
+    z-index: 9;
+}
+
+#movingtext {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 60px 30px;
+    /* Ensure this container explicitly defines its width if its children are causing global overflow */
+    width: 100%;
+}
+
+#movingtext::-webkit-scrollbar {
+    display: none;
+}
+
+.con {
+    white-space: nowrap;
+    display: inline-block;
+    animation-name: move;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+#movingtext h1 {
+    display: inline-block;
+    font-size: 7rem;
+}
+
+/* Renamed from #gol to avoid ID duplication */
+.gol-dot {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 10px 20px;
+    background-color: #FE320A;
+}
+
+@keyframes move {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+#pagcenter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    position: relative;
+    /* Added to contain move-shp1/2 */
+}
+
+#pagcenter h2 {
+    width: 65%;
+    font-size: 3rem;
+    font-weight: 900;
+    top: -30px;
+    line-height: 50px;
+    padding: 0 50px;
+    letter-spacing: 1px;
+    margin-top: 10%;
+    z-index: 9;
+}
+
+#cent-right {
+    width: 28%;
+    /* height: 100%; Removed fixed height here */
+    margin-top: 220px;
+    display: flex;
+    /* Added display flex to make items stack better if desired */
+    flex-direction: column;
+    align-items: flex-end;
+    /* Align to the right */
+}
+
+#cent-right img {
+    max-width: 100%;
+    /* Ensures image is responsive and doesn't overflow its parent */
+    height: auto;
+    /* Maintains aspect ratio */
+    border-radius: 10px;
+}
+
+#cent-right p {
+    width: 100%;
+    font-size: 16px;
+    margin-top: 40px;
+}
+
+#move {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    /* Ensure this doesn't overflow if its children are too large */
+}
+
+#move-shp1 {
+    width: 30%;
+    height: 50%;
+    position: absolute;
+    border-radius: 50%;
+    top: 30%;
+    right: 50%;
+    animation-name: move1;
+    animation-duration: 4.1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    filter: blur(20px);
+    background: linear-gradient(#ff9831, #ff9831);
+}
+
+#move-shp2 {
+    width: 30%;
+    height: 50%;
+    border-radius: 50%;
+    position: absolute;
+    right: 50%;
+    top: 30%;
+    animation: move2;
+    animation-timing-function: inherit;
+    animation-duration: 4.1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    filter: blur(20px);
+    background: linear-gradient(#FE320A, #fe3f0a);
+}
+
+@keyframes move1 {
+    from {
+        transform: translate(-10px, -40px)
+    }
+
+    to {
+        transform: translate(-20px, 20px)
+    }
+}
+
+@keyframes move2 {
+    from {
+        transform: translate(-10px, -40px)
+    }
+
+    to {
+        transform: translate(-20px, 20px)
+    }
+}
+
+#pag3 {
+    width: 100%;
+    min-height: 150vh;
+    /* Changed to vh */
+    background-color: #EFEAE3;
+    position: relative;
+    /* Important for containing absolute elements if any */
+}
+
+#elem-con {
+    width: 100%;
+    /* height: 100%; Removed fixed height */
+    top: 100px;
+    position: relative;
+    z-index: 99;
+    background-color: #EFEAE3;
+}
+
+.elem {
+    width: 100%;
+    /* height: 100%; Removed fixed height */
+    position: relative;
+    display: flex;
+    /* Changed to flex to align items more easily */
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 30px;
+    overflow: hidden;
+    /* Added to contain overlayer elements */
+    border-bottom: 1px solid rgba(132, 123, 123, 0.699);
+}
+
+.elem h2 {
+    /* width: 50%; Removed explicit width to let content size it */
+    font-size: 2.3rem;
+    position: absolute;
+    font-weight: 900;
+    left: 30px;
+    /* Aligned with padding */
+    padding-left: 0;
+    /* Removed this as it was redundant with left */
+}
+
+#em {
+    text-align: right;
+    margin-left: auto;
+    /* Pushes it to the right in flex container */
+}
+
+#em h3 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#em h4 {
+    font-size: 17px;
+    font-weight: 600;
+    color: rgb(173, 167, 167);
+}
+/* 
+.elem .overlayer {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: -1;
+    top: -150px; */
+    /* Changed to 100% for proper off-screen positioning */
+    /* position: absolute;
+    transition: all 0.3s ease;
+    background-color: #EFEAE3;
+    transition: all 0.3s ease; */
+    /* Added transition for smooth effect */
+/* }
+
+.elem:hover .overlayer {
+    top: 0px;
+
+    z-index: -1;
+} */
+
+.elem .overlayer1 {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: -1;
+    top: 150px;
+    /* Changed to 100% for proper off-screen positioning */
+    position: absolute;
+    background-color: #ff9831;
+    transition: all 0.3s ease;
+    /* Added transition for smooth effect */
+}
+
+.elem:hover .overlayer1 {
+    top: 0px;
+
+    /* Changed to 0 for proper positioning */
+    /* transition: all 0.3s ease; Already on .overlayer1 */
+    z-index: -1;
+}
+
+#fixed-image {
+    /* This element was commented out in HTML, keeping styles in case you reactivate it */
+    width: 23%;
+    height: 57%;
+    position: fixed;
+    border-radius: 7%;
+    top: 30%;
+    left: 50%;
+    z-index: 999;
+    display: none;
+    background-size: cover;
+    background-position: center;
+    background-color: black;
+}
+
+#ap a {
+    width: auto;
+    /* Let content dictate width, or set a fixed width if desired */
+    display: inline-block;
+    /* Essential for padding/margin on inline elements */
+    border: 1px solid black;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-top: 150px;
+    margin-left: 30px;
+    /* Using margin-left instead of left for simpler positioning */
+    overflow: hidden;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: lighter;
+    color: black;
+    z-index: 99;
+    position: relative;
+    /* Important for ::after pseudo-element */
+}
+
+#ap a::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 100%;
+    /* Changed to 100% for proper off-screen positioning */
+    left: 0;
+    /* Changed right to left for consistency */
+    transition: all ease 0.3s;
+    background-color: rgb(3, 3, 3);
+    border-radius: 60px;
+}
+
+#ap a:hover::after {
+    top: 0%;
+    border-radius: 0%;
+    z-index: -1;
+}
+
+#ap a:hover {
+    color: white;
+    z-index: 9;
+}
+
+#pag4 {
+    width: 100%;
+    min-height: 230vh;
+    /* Changed to vh */
+    position: relative;
+    background-color: #EFEAE3;
+    z-index: 99;
+}
+
+#right img {
+    width: 57%;
+    height: auto;
+    /* Ensure aspect ratio is maintained */
+    max-width: calc(100% - 60px);
+    /* Account for padding */
+    position: absolute;
+    right: 0px;
+    top: 100px;
+    border-radius: 30px;
+    padding-right: 30px;
+}
+
+#left {
+    width: 50%;
+    height: 46.7%; 
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding-left: 30px;
+    margin-left: 30px;
+    border-radius: 20px;
+    top: 100px;
+    background-color: black;
+}
+
+#left h1 {
+    font-weight: 600;
+    font-size: 4rem;
+    color: white;
+    position: relative;
+    top: 26%;
+    left: 12%;
+    background: linear-gradient(to bottom, #faf9f9, #312b28);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-left: 2px solid rgb(63, 55, 55);
+}
+
+
+#left p {
+    width: 50%;
+    left: 12%;
+    position: relative;
+    top: 30%;
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+}
+
+.swiper-wrapper {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    z-index: 99;
+    top: 80vw;
+    /* background-color: #000000; */
+    /* Using vw here means it scales with viewport width */
+    overflow-x: auto;
+    /* Keep horizontal scroll for swiper */
+    white-space: nowrap;
+    /* Prevent wrapping if swiper items are inline-block */
+    /* background-color: aquamarine; */
+}
+
+.swiper-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.swiper-slide {
+    width: 250px;
+    height: 15%;
+    /* Gave a fixed width to slides for consistent swiper behavior */
+    flex-shrink: 0;
+    /* Prevent slides from shrinking if content is too wide */
+    height: 15%;
+    /* This relative height might be problematic with fixed width */
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+    /* Changed to inline-block for proper flow with white-space: nowrap */
+    vertical-align: top;
+    /* Align items at the top */
+    border-left: 1px solid rgba(167, 161, 161, 0.845);
+    padding: 0px 30px;
+    margin: 0px 50px;
+    left: 20px;
+    cursor: grab;
+}
+
+.swiper-slide p {
+    width: 240px;
+    /* height: 150px; */
+    /* background-color: #FE320A; */
+    position: relative;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.swiper-slide img{
+    width: 70%;
+    /* background-color: #000000; */
+    
+}
+
+#who h1 {
+    top: 70vw;
+    font-size: 16px;
+    font-weight: 500;
+    left: 80px;
+    position: relative;
+}
+
+/* Renamed from #gol to avoid ID duplication */
+.who-gol-dot {
+    width: 10px;
+    height: 10px;
+    top: 71.1vw;
+    left: 60px;
+    position: relative;
+    border-radius: 50%;
+    background-color: #FE320A;
+    /* Added background color which was missing */
+}
+
+#pag5 {
+    width: 100%;
+    min-height: 100vh;
+    /* Changed to vh */
+    background-color: black;
+    /* --- Crucial fix for animated shapes overflow --- */
+    overflow: hidden;
+}
+
+.background {
+    background-color: #000000;
+    min-height: 100vh;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 30px;
+    z-index: 9;
+    /* --- Crucial fix for animated shapes overflow --- */
+    overflow: hidden;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 88px;
+    color: white;
+    gap: 3px;
+    font-weight: 900;
+    font-size: 1.6rem;
+    z-index: 9;
+}
+
+/* Email Box */
+.email-box {
+    position: relative;
+    top: 10px;
+    right: 2rem;
+    text-align: right;
+    color: #fff;
+    z-index: 9;
+}
+
+.email-box p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.email-box input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #f0ebe6;
+    padding: 0.3rem;
+    color: #fff;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+/* Main Text */
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 60px;
+    z-index: 9;
+    justify-content: center;
+}
+
+main h1 {
+    font-size: 19rem;
+    font-weight: bolder;
+    color: #f0ebe6;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #fff;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+    position: relative;
+    /* Added to contain any potentially absolutely positioned children */
+    z-index: 10;
+    /* Ensure footer is above animated blobs */
+}
+
+footer a {
+    color: #fff;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+
+#box {
+    width: 90%;
+    height: 66%;
+    top: -170px;
+    left: -100px;
+    position: absolute;
+    /* overflow: auto; Removed this, it could cause internal scrollbars if content overflowed */
+    rotate: 60deg;
+    background-color: #FE330A;
+    filter: blur(50px);
+    animation: shape1 5s linear infinite alternate;
+}
+
+@keyframes shape1 {
+    from {
+        transform: rotate(-70deg);
+    }
+
+    to {
+        transform: rotate(-80deg);
+    }
+}
+
+
+#box1 {
+    width: 90%;
+    height: 66%;
+    position: absolute;
+    rotate: 95deg;
+    top: -100px;
+    /* Adjusted to a fixed pixel value or vw for consistency */
+    right: -50vw;
+    background-color: #FE330A;
+    filter: blur(50px);
+    animation: shape2 5s linear infinite alternate;
+}
+
+@keyframes shape2 {
+    from {
+        transform: rotate(-70deg);
+    }
+
+    to {
+        transform: rotate(-60deg);
+    }
+}
+
+#loder{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    top: 0%;
+    justify-content: center;
+    position: fixed;
+        transition: all ease 1s;
+
+    z-index: 99;
+    background-color: #000000fa;
+}
+
+#loder h1 {
+    font-size: 4rem;
+    color: transparent;
+    position: absolute;
+    background: linear-gradient(to right, orange, orangered);
+    -webkit-background-clip: text;
+    opacity: 0;
+    animation-name: lod;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+
+#loder h1:nth-child(2) {
+    animation-delay: 2s;
+}
+
+#loder h1:nth-child(3) {
+    animation-delay: 3s;
+}
+
+@keyframes lod {
+
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
